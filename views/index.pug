@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  h1= title
+  nav
+    if currentUser
+      p Welcome back #{currentUser.username}
+      p
+        a(href='/logout') Log out
+      p
+        a(href='/message/new') New message
+    else
+      p
+        a(href='/login') Log in
+        br
+        a(href='/register') Register
+  div
+    each msg in messages
+      h2 #{msg.title}
+      p #{msg.body}
+      p at #{msg.timestamp} by 
+        if msg.user
+          strong #{msg.user.username}
+        else
+          strong Anonymous
+      if (currentUser && currentUser.type === 'admin')
+        form(action=('/messages/'+msg._id) method='POST')
+          button Delete
+
+

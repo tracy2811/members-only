@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1= title
+  form(action='' method='POST')
+    label(for='firstName') First Name
+    input#firstName(type='text' name='firstName' required value=(user ? user.firstName : ''))
+    label(for='lastName') Last Name
+    input#lastName(type='text' name='lastName' required value=(user ? user.lastName : ''))
+    br
+    label(for='username') Username
+    input#username(type='text' name='username' required value=(user ? user.username : ''))
+    label(for='password') Password
+    input#password(type='password' name='password' required)
+    label(for='confirmPassword') Confirm Password
+    input#confirmPassword(type='password' name='confirmPassword' required)
+    select(name='type')
+      each type in types
+        option(value=type) #{type}
+    button #{title}
+  if (errors && errors.length)
+    ul
+      each err in errors
+        li!= err.msg

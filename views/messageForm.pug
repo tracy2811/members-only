@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1= title
+  form(method='POST' action='')
+    label(for='title') Title
+    input#title(type='text' name='title')
+    label(for='body') Body
+    textarea#body(name='body')
+    button Post
