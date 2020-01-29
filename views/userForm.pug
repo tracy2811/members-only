@@ -17,6 +17,8 @@ block content
     select(name='type')
       each type in types
         option(value=type) #{type}
+    label(for='code') Secret Code:
+    input#code(type='text' name='code')
     button #{title}
   if (errors && errors.length)
     ul
